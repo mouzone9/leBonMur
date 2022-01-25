@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LeBonMur{% endblock %}
+
+{% block body %}
+    <h1>Le bon mur</h1>
+    <h2>Advertisements</h2>
+    <div class="ads">
+        {% for ad in ads %}
+            <div class="ad">
+                <h3>{{ ad.title }}</h3>
+                <ul class="tags">
+                    {% for tag in ad.tags %}
+                        <li style="color:{{ tag.color }}">{{ tag.name }} - {{ tag.id }}</li>
+                    {% endfor %}
+                </ul>
+                <strong>{{ ad.price }}€</strong>
+                <p>{{ ad.description }}</p>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
