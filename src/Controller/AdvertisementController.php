@@ -22,4 +22,12 @@ class AdvertisementController extends AbstractController
             'tags' => $tagRepository->findAll()
         ]);
     }
+
+    #[Route('/ad/{slug}', name: 'ad')]
+    public function showOne(Advertisement $advertisement): Response
+    {
+        return $this->render('advertisement/show-one.html.twig', [
+            'ad' => $advertisement
+        ]);
+    }
 }

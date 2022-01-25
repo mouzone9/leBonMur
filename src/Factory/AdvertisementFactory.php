@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Advertisement;
 use App\Repository\AdvertisementRepository;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -28,11 +29,14 @@ use Zenstruck\Foundry\Proxy;
  */
 final class AdvertisementFactory extends ModelFactory
 {
-    public function __construct()
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
     {
         parent::__construct();
 
         // TODO inject services if required (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services)
+        $this->slugger = $slugger;
     }
 
     protected function getDefaults(): array
@@ -58,7 +62,9 @@ final class AdvertisementFactory extends ModelFactory
         $result = [];
         $rand = rand(1, 10);
         for ($i = 0; $i < $rand; $i++) {
-            $result[] = self::faker()->imageUrl();
+            //to get unique images
+            $random = rand(0, 100000);
+            $result[] = "https://picsum.photos/200/300?random=$random";
         }
         return $result;
     }
@@ -66,8 +72,9 @@ final class AdvertisementFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this// ->afterInstantiate(function(Advertisement $advertisement): void {})
-            ;
+        return $this->afterInstantiate(function (Advertisement $advertisement ): void {
+            $advertisement->setSlug($this->slugger->slug($advertisement->getTitle()));
+        });
     }
 
     protected static function getClass(): string

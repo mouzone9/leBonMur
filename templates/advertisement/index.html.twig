@@ -7,20 +7,25 @@
     <h2>Advertisements</h2>
     <div class="ads">
         {% for ad in ads %}
-            <div class="ad">
-                <h3>{{ ad.title }}</h3>
-                <ul class="tags">
-                    {% for tag in ad.tags %}
-                        <li style="color:{{ tag.color }}">{{ tag.name }} - {{ tag.id }}</li>
-                    {% endfor %}
-                </ul>
-                <strong>{{ ad.price }}€</strong>
-                <p>{{ ad.description }}</p>
+                <div class="ad ">
+                    <img src="{{ ad.pictures[0]}}" alt="" class="ad-image">
+                    <div class="ad-body">
+                        <h4 class="ad-title">{{ ad.title }}</h4>
+                        <ul class="tags">
+                            {% for tag in ad.tags %}
+                                <li style="color:{{ tag.color }}">{{ tag.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <strong>{{ ad.price }}€</strong>
+                        <p class="ad-text">{{ ad.description }}</p>
+                        <a href="{{ path("ad", {"slug" : ad.slug}) }}">See more</a>
+                    </div>
 
-            </div>
+
+                </div>
+
         {% endfor %}
     </div>
-
 
 
 {% endblock %}

@@ -1,3 +1,66 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+}
+
 body {
-    background-color: lightgray;
+    font-size: 1.6rem;
+}
+
+main {
+    max-width: 100rem;
+    margin: auto;
+}
+
+.ads {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem 3rem;
+    color: black;
+}
+
+
+.ad {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows : 20rem 1fr;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow:
+            0 1px 1px hsl(0deg 0% 0% / 0.075),
+            0 2px 2px hsl(0deg 0% 0% / 0.075),
+            0 4px 4px hsl(0deg 0% 0% / 0.075),
+            0 8px 8px hsl(0deg 0% 0% / 0.075),
+            0 16px 16px hsl(0deg 0% 0% / 0.075)
+;
+}
+
+.ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ad-body {
+    padding: 10px;
+}
+
+.ad-link {
+    color: black;
+    display: block;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.ad-gallery {
+    height: 30rem;
+    width: 100%;
 }
