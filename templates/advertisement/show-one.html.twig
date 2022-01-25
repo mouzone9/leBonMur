@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LeBonMur{% endblock %}
+
+{% block body %}
+    <img src="{{ ad.pictures[0]}}" alt="" class="ad-gallery">
+    <h2>{{ ad.title }}</h2>
+    <ul class="tags">
+        {% for tag in ad.tags %}
+            <li style="color:{{ tag.color }}">{{ tag.name }}</li>
+        {% endfor %}
+    </ul>
+    <strong>{{ ad.price }}€</strong>
+    <p>{{ ad.description }}</p>
+{% endblock %}
