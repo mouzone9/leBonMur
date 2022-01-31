@@ -22,7 +22,7 @@ symfony console doctrine:fixtures:load
 Run docker containers and launch webpack dev server: 
 ```
 docker-compose up -d
-yarn run dev-server
+yarn run watch
 ```
 Go in container bash :
 ```
