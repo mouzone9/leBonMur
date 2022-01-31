@@ -3,8 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Advertisement;
+use App\Entity\Tag;
 use Doctrine\DBAL\Types\TextType;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,6 +27,23 @@ class AdvertisementFormType extends AbstractType
             ->add('title')
             ->add('description', TextareaType::class)
             ->add('price', NumberType::class)
+            ->add('status', ChoiceType::class, [
+                "choices" => [
+                    "Draft" => Advertisement::$DRAFT_STATUS ,
+                    "Public" => Advertisement::$PUBLIC_STATUS
+                ]
+            ])
+            ->add("tags", EntityType::class, [
+                "placeholder" => "Select tags",
+                'class' => Tag::class,
+                "multiple" => true,
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder("tag");
+                },
+                "choice_label" => function(Tag $tag) {
+                    return $tag->getName();
+                }
+            ])
             ->add('slider_pictures', FileType::class, array(
                 'mapped' => false,
                 'attr' => array(
@@ -31,6 +52,7 @@ class AdvertisementFormType extends AbstractType
                 ),
                 'multiple'=> "true"
             ))
+
             ->add('Create', SubmitType::class, array('label' => 'Insert Image', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')));/*           ->add('slider_pictures', FileType::class, [
                 'label' => 'Slider pictures',
 

@@ -7,24 +7,36 @@
     <h2>Advertisements</h2>
     <div class="ads">
         {% for ad in ads %}
-                <div class="ad ">
-                    {% if ad.pictures[0] %}
-                    <img src="{{ asset('/uploads/pictures/' ~ ad.pictures[0]) }}" alt="" class="ad-image">
-                    {% endif %}
-                    <div class="ad-body">
-                        <h4 class="ad-title">{{ ad.title }}</h4>
-                        <ul class="tags">
-                            {% for tag in ad.tags %}
-                                <li style="color:{{ tag.color }}">{{ tag.name }}</li>
-                            {% endfor %}
-                        </ul>
-                        <strong>{{ ad.price }}€</strong>
-                        <p class="ad-text">{{ ad.description }}</p>
-                        <a href="{{ path("ad", {"slug" : ad.slug}) }}">See more</a>
+            <div class="ad ">
+                <div class="swiper ad-image" {{ stimulus_controller('gallery-ad') }}>
+                    <div class="swiper-wrapper">
+                        {% for picture in ad.pictures %}
+                            {% if picture %}
+                                {% if picture  starts with "http" %}
+                                    <img src="{{ picture }}" alt=""
+                                         class=" swiper-slide">
+                                    {% else %}
+                                        <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                                             class=" swiper-slide">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
 
-
                 </div>
+
+                <div class="ad-body">
+                    <h4 class="ad-title">{{ ad.title }}</h4>
+                    <ul class="tags">
+                        {% for tag in ad.tags %}
+                            <li style="color:{{ tag.color }}">{{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                    <strong>{{ ad.price }}€</strong>
+                    <p class="ad-text">{{ ad.description }}</p>
+                    <a href="{{ path("ad", {"slug" : ad.slug}) }}">See more</a>
+                </div>
+            </div>
 
         {% endfor %}
     </div>
