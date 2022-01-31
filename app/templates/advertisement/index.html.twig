@@ -8,7 +8,9 @@
     <div class="ads">
         {% for ad in ads %}
                 <div class="ad ">
-                    <img src="{{ ad.pictures[0]}}" alt="" class="ad-image">
+                    {% if ad.pictures[0] %}
+                    <img src="{{ asset('/uploads/pictures/' ~ ad.pictures[0]) }}" alt="" class="ad-image">
+                    {% endif %}
                     <div class="ad-body">
                         <h4 class="ad-title">{{ ad.title }}</h4>
                         <ul class="tags">

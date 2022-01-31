@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Ad{% endblock %}
+
+{% block body %}
+    <h1>New Ad</h1>
+{#    <form method="post" enctype="multipart/form-data" {{ stimulus_controller('create_ad') }}>#}
+{#        {{ form_row(adForm.title) }}#}
+{#        {{ form_row(adForm.description) }}#}
+{#        {{ form_row(adForm.price) }}#}
+{#        {{ form_row(adForm._token) }}#}
+{#        <div class="row mb-3">#}
+{#            <button type="button" class="btn btn-danger d-none" {{ stimulus_target('create-ad', 'delBtn') }}>Delete</button>#}
+{#            <div class="pictures-label d-flex justify-content-between mb-1">#}
+{#                {{ form_label(adForm.pictures) }}#}
+{#                <button type="button" {{ stimulus_action('create-ad', 'addPicture') }} class="btn btn-primary">Add</button>#}
+{#            </div>#}
+
+{#            {{ form_widget(adForm.pictures, {'attr' : {'data-create-ad-target' : 'pictcont'}}) }}#}
+{#        </div>#}
+{#        {{ form_row(adForm.pictures) }}#}
+{#        <button type="submit" class="btn btn-primary">Create</button>#}
+{#    </form>#}
+
+    {{ form_start(adForm) }}
+    {{ form_widget(adForm) }}
+    {{ form_end(adForm) }}
+
+
+{% endblock %}

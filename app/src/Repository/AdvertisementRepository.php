@@ -19,6 +19,18 @@ class AdvertisementRepository extends ServiceEntityRepository
         parent::__construct($registry, Advertisement::class);
     }
 
+    public function findAllByStatus($status)
+    {
+
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.status = :val')
+            ->setParameter('val', $status)
+            ->orderBy('a.publicationDate', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Advertisement[] Returns an array of Advertisement objects
     //  */

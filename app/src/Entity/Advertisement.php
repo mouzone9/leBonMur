@@ -6,6 +6,8 @@ use App\Repository\AdvertisementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AdvertisementRepository::class)]
 class Advertisement
@@ -22,6 +24,10 @@ class Advertisement
     private $description;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\GreaterThan(
+        value: 0,
+        message: "The price must be greater than 0€"
+    )]
     private $price;
 
     #[ORM\Column(type: 'datetime')]
@@ -108,6 +114,7 @@ class Advertisement
 
     public function setPictures(array $pictures): self
     {
+
         $this->pictures = $pictures;
 
         return $this;

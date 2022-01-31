@@ -9,4 +9,7 @@
 import './styles/app.css';
 
 // start the Stimulus application
-// import './bootstrap';
+import './bootstrap';
+
+
+//if in a form create
