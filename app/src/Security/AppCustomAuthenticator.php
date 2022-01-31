@@ -30,12 +30,12 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $y = $request->request->get('y', '');
+        $firstName = $request->request->get('firstName', '');
 
-        $request->getSession()->set(Security::LAST_USERNAME, $y);
+        $request->getSession()->set(Security::LAST_USERNAME, $firstName);
 
         return new Passport(
-            new UserBadge($y),
+            new UserBadge($firstName),
             new PasswordCredentials($request->request->get('password', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
@@ -50,7 +50,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('/'));
+        return new RedirectResponse($this->urlGenerator->generate(''));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
