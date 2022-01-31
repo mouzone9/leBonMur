@@ -32,3 +32,5 @@ And start symfony server :
 ```
 symfony server:start -d
 ```
+
+The server run finally at localhost:9000
