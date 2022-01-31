@@ -3,7 +3,21 @@
 {% block title %}LeBonMur{% endblock %}
 
 {% block body %}
-    <img src="{{ ad.pictures[0]}}" alt="" class="ad-gallery">
+    <div class="swiper ad-gallery" {{ stimulus_controller('gallery-ad') }}>
+        <div class="swiper-wrapper">
+            {% for picture in ad.pictures %}
+                {% if picture %}
+                    {% if picture  starts with "http" %}
+                        <img src="{{ picture }}" alt=""
+                             class=" swiper-slide">
+                    {% else %}
+                        <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                             class=" swiper-slide">
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
     <h2>{{ ad.title }}</h2>
     <ul class="tags">
         {% for tag in ad.tags %}

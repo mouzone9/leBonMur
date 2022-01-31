@@ -9,4 +9,10 @@
 import './styles/app.css';
 
 // start the Stimulus application
-// import './bootstrap';
+import './bootstrap';
+
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/css';
+//if in a form create

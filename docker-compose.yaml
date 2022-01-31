@@ -32,7 +32,7 @@ services:
             - POSTGRES_HOST=database
             - POSTGRES_PORT=5432
             - POSTGRES_USER=symfony
-            - POSTGRES_PASS=root
+            - POSTGRES_PASS=ChangeMe
 
 
 volumes:
