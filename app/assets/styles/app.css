@@ -79,4 +79,11 @@ footer {
 .ad-gallery {
     height: 30rem;
     width: 100%;
+    object-fit: cover;
+}
+
+
+header a {
+    text-decoration: none;
+    color: #000;
 }
