@@ -22,6 +22,18 @@ services:
             - db-data:/var/lib/postgresql/data:rw
         ports:
             - "5432"
+    phppgadmin:
+        container_name: phppgadmin
+        image: neimheadh/phppgadmin:latest
+        ports:
+            - "8080:80"
+        environment:
+            - POSTGRES_HOST=database
+            - POSTGRES_PORT=5432
+            - POSTGRES_USER=symfony
+            - POSTGRES_PASS=ChangeMe
+ 
+
 
     phppgadmin:
         container_name: phppgadmin
