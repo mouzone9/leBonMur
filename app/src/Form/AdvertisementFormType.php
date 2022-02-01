@@ -53,31 +53,8 @@ class AdvertisementFormType extends AbstractType
                 'multiple'=> "true"
             ))
 
-            ->add('Create', SubmitType::class, array('label' => 'Insert Image', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')));/*           ->add('slider_pictures', FileType::class, [
-                'label' => 'Slider pictures',
+            ->add('Create', SubmitType::class, array('label' => 'Insert Image', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')));
 
-                // unmapped means that this field is not associated to any entity property
-                'mapped' => false,
-
-                'required' => false,
-                'attr' => array(
-                    'accept' => 'image/*',
-                    'multiple' => 'multiple'
-                ),
-                'multiple' => true,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
-                'constraints' => [
-                    new File([
-                        'mimeTypes' => [
-                            'image/*',
-                        ],
-                        'mimeTypesMessage' => 'Please choose images',
-                    ])
-                ],
-
-            ])*/;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/controllers/gallery-ad-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/uploads/pictures/IMG-0836-61f80490c5280.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/uploads/pictures/IMG-0836-61f80563ec1ba.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/uploads/pictures/paslephp-61f80490d40fa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/uploads/pictures/paslephp-61f8056401b09.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +178,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643626713485</updated>
-      <workItem from="1643626717517" duration="19919000" />
+      <workItem from="1643626717517" duration="20654000" />
     </task>
     <servers />
   </component>
