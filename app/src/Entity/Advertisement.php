@@ -49,6 +49,10 @@ class Advertisement
     #[ORM\Column(type: 'string', length: 255)]
     private $slug;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'advertisements')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $seller;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -167,6 +171,18 @@ class Advertisement
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getSeller(): ?User
+    {
+        return $this->seller;
+    }
+
+    public function setSeller(?User $seller): self
+    {
+        $this->seller = $seller;
 
         return $this;
     }

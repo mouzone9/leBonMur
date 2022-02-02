@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Advertisement;
+use App\Entity\User;
 use App\Factory\AdvertisementFactory;
 use App\Form\AdvertisementFormType;
+use App\Form\SearchFormType;
+use App\Form\SearchType;
 use App\Repository\AdvertisementRepository;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,31 +25,57 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AdvertisementController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(AdvertisementRepository $repository, TagRepository $tagRepository, SerializerInterface $serializer): Response
+    public function index(AdvertisementRepository $repository): Response
     {
+        $searchForm = $this->createForm(SearchFormType::class);
         return $this->render('advertisement/index.html.twig', [
-            'ads' => $repository->findAllByStatus(Advertisement::$DRAFT_STATUS),
-            'tags' => $tagRepository->findAll()
+            'ads' => $repository->findAllByStatus(Advertisement::$PUBLIC_STATUS),
+            'searchForm' => $searchForm->createView()
         ]);
     }
 
+    #[Route('/search', name: 'search_ad')]
+    public function search(AdvertisementRepository $repository, Request $request): Response
+    {
+        $searchForm = $this->createForm(SearchFormType::class);
+        $searchForm->handleRequest($request);
+        if($searchForm->isSubmitted()) {
+            $query = $searchForm->getData()["textSearch"];
+
+
+            return $this->render('advertisement/search-result.html.twig', [
+                'ads' => $repository->findAllByQuery($query),
+                'searchForm' => $searchForm->createView(),
+                "query" => $query
+            ]);
+        }
+//
+//        $this->addFlash("error", "Search not correct");
+//        return $this->redirectToRoute("index");
+
+    }
+
     #[Route('/ad/create', name: 'create_ad')]
+    #[IsGranted("ROLE_USER")]
     public function create(Request $request, SluggerInterface $slugger, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(AdvertisementFormType::class, );
+        $form = $this->createForm(AdvertisementFormType::class,);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $pictures = $form->get('slider_pictures')->getData();
 
             /** @var Advertisement $advertisement */
             $advertisement = $form->getData();
+            $user = $this->getUser();
+            $advertisement->setSeller($user);
+
             if ($pictures) {
                 $picturesPath = [];
                 foreach ($pictures as $picture) {
                     $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
                     // this is needed to safely include the file name as part of the URL
                     $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename.'-'.uniqid().'.'.$picture->guessExtension();
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
 
                     // Move the file to the directory where brochures are stored
                     try {
@@ -55,7 +85,7 @@ class AdvertisementController extends AbstractController
                         );
                     } catch (FileException $e) {
                         // ... handle exception if something happens during file upload
-                        $this->addFlash("error","An error occured during the upload :". $e->getMessage());
+                        $this->addFlash("error", "An error occured during the upload :" . $e->getMessage());
                     }
 
                     // updates the 'brochureFilename' property to store the PDF file name
@@ -70,13 +100,12 @@ class AdvertisementController extends AbstractController
 
             $advertisement
                 ->setPublicationDate(new \DateTime())
-                ->setSlug($slugger->slug($advertisement->getTitle()))
-                ->setStatus(Advertisement::$DRAFT_STATUS);
+                ->setSlug($slugger->slug($advertisement->getTitle()));
 
             $em->persist($advertisement);
             $em->flush();
 
-            $this->addFlash("success", "Well done ! Your new advertisement is created : ". $advertisement->getTitle() );
+            $this->addFlash("success", "Well done ! Your new advertisement is created : " . $advertisement->getTitle());
 
             return $this->redirectToRoute("index");
         }
@@ -85,6 +114,64 @@ class AdvertisementController extends AbstractController
         ]);
     }
 
+    #[Route('/ad/edit/{slug}', name: 'update_ad')]
+    #[IsGranted("ROLE_USER")]
+    public function update(
+        Advertisement          $advertisement,
+        Request                $request,
+        SluggerInterface       $slugger,
+        EntityManagerInterface $em
+    ): Response
+    {
+        $form = $this->createForm(AdvertisementFormType::class, $advertisement);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pictures = $form->get('slider_pictures')->getData();
+
+            /** @var Advertisement $advertisement */
+            $advertisement = $form->getData();
+
+            if ($pictures) {
+                $picturesPath = [];
+                foreach ($pictures as $picture) {
+                    $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $picture->move(
+                            $this->getParameter('pictures_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                        $this->addFlash("error", "An error occured during the upload :" . $e->getMessage());
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $picturesPath[] = $newFilename;
+                }
+                $advertisement->setPictures($picturesPath);
+            }
+
+
+            $advertisement
+                ->setSlug($slugger->slug($advertisement->getTitle()));
+
+            $em->flush();
+
+            $this->addFlash("success", "Well done ! Your advertisement is updated : " . $advertisement->getTitle());
+
+            return $this->redirectToRoute("ad", ["slug" => $advertisement->getSlug()]);
+        }
+        return $this->render('advertisement/update.html.twig', [
+            'adForm' => $form->createView(),
+            'ad' => $advertisement
+        ]);
+    }
 
 
     #[Route('/ad/{slug}', name: 'ad')]
@@ -92,6 +179,23 @@ class AdvertisementController extends AbstractController
     {
         return $this->render('advertisement/show-one.html.twig', [
             'ad' => $advertisement
+        ]);
+    }
+
+    #[Route('/ad/delete/{slug}', name: 'delete_ad')]
+    public function delete(Advertisement $advertisement, EntityManagerInterface $em): Response
+    {
+        $em->remove($advertisement);
+        $em->flush();
+        $this->addFlash("success", "Ad" . $advertisement->getTitle() . " has successfully been deleted");
+        return $this->redirectToRoute("user_ads");
+    }
+
+    #[Route('/user/ads', name: 'user_ads')]
+    public function showUserAds(AdvertisementRepository $advertisementRepository): Response
+    {
+        return $this->render('advertisement/own-ads.html.twig', [
+            'ads' => $advertisementRepository->findAllByUser($this->getUser())
         ]);
     }
 }

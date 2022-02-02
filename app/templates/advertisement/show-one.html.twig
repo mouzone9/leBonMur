@@ -21,6 +21,11 @@
         </div>
     </div>
     <h2>{{ ad.title }}</h2>
+    <p>
+        <i>
+            {{ ad.status }}
+        </i>
+    </p>
     <ul class="tags">
         {% for tag in ad.tags %}
             <li style="color:{{ tag.color }}">{{ tag.name }}</li>

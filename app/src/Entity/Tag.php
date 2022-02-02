@@ -6,6 +6,7 @@ use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
@@ -19,9 +20,11 @@ class Tag
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\File(mimeTypes:[ 'image/svg+xml', 'image/png'])]
     private $pictogram;
 
     #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\CssColor]
     private $color;
 
     #[ORM\ManyToMany(targetEntity: Advertisement::class, inversedBy: 'tags')]
