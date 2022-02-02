@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +36,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255)]
     private $mail;
+
+    public static $ROLE_USER = "USER";
+    public static $ROLE_EDITOR = "EDITOR";
+    public static $ROLE_ADMIN = "ADMIN";
+
+    #[ORM\OneToMany(mappedBy: 'seller', targetEntity: Advertisement::class, orphanRemoval: true)]
+    private $advertisements;
+
+    public function __construct()
+    {
+        $this->advertisements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -125,6 +139,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Advertisement[]
+     */
+    public function getAdvertisements(): Collection
+    {
+        return $this->advertisements;
+    }
+
+    public function addAdvertisement(Advertisement $advertisement): self
+    {
+        if (!$this->advertisements->contains($advertisement)) {
+            $this->advertisements[] = $advertisement;
+            $advertisement->setSeller($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdvertisement(Advertisement $advertisement): self
+    {
+        if ($this->advertisements->removeElement($advertisement)) {
+            // set the owning side to null (unless already changed)
+            if ($advertisement->getSeller() === $this) {
+                $advertisement->setSeller(null);
+            }
+        }
 
         return $this;
     }

@@ -1,7 +1,18 @@
-<header>
+<header class="d-flex justify-content-between">
     <a href="{{ path("index") }}">
         <h1>Le bon Mur</h1>
     </a>
 
-    <a href="{{ path("create_ad") }}">New Advertisement</a>
+    <div class="d-flex">
+        {% if app.user %}
+            {% if "EDITOR" in app.user.roles %}
+                <a href="{{ path("create_ad") }}" class="me-2">New ad</a>
+                <a href="{{ path("user_ads") }}" class="me-2">My ads</a>
+            {% endif %}
+            {% if "ADMIN" in app.user.roles %}
+                <a href="{{ path("tags") }}">Tags management</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
 </header>

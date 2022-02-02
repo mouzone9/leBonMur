@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>Le bon mur</h1>
+    {% include "/parts/search.html.twig" %}
     <h2>Advertisements</h2>
     <div class="ads">
         {% for ad in ads %}
@@ -15,9 +16,9 @@
                                 {% if picture  starts with "http" %}
                                     <img src="{{ picture }}" alt=""
                                          class=" swiper-slide">
-                                    {% else %}
-                                        <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
-                                             class=" swiper-slide">
+                                {% else %}
+                                    <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                                         class=" swiper-slide">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}

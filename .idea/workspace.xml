@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="" />
+    <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/own-ads.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/search-result.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/update.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/parts/search.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/tag/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/le-bon-mur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/le-bon-mur.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Controller/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/TagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Entity/Advertisement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Advertisement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Factory/TagFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Factory/TagFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Repository/AdvertisementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Repository/AdvertisementRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/parts/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/parts/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/tag/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/tag/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php8-sf6/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php8-sf6/Dockerfile" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,6 +166,8 @@
       <path value="$PROJECT_DIR$/app/vendor/symfony/messenger" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/app/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/app/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="24Sb028UZIUL9h9yO5m59PaLwrN" />
@@ -148,7 +180,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/advertisement" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -158,6 +190,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\advertisement" />
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\parts" />
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\tag" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\assets\controllers" />
     </key>
   </component>
@@ -171,6 +206,7 @@
       <updated>1643626713485</updated>
       <workItem from="1643626717517" duration="20654000" />
       <workItem from="1643713762453" duration="910000" />
+      <workItem from="1643808867198" duration="16849000" />
     </task>
     <servers />
   </component>

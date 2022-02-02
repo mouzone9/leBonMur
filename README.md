@@ -42,3 +42,7 @@ symfony server:start -d
 ```
 
 The server run finally at localhost:9000
+
+For testing purpose, a first admin is automatically created, here is his credentials :
+firstName = admin
+password = password

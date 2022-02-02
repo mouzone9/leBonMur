@@ -30,7 +30,8 @@ class AdvertisementFormType extends AbstractType
             ->add('status', ChoiceType::class, [
                 "choices" => [
                     "Draft" => Advertisement::$DRAFT_STATUS ,
-                    "Public" => Advertisement::$PUBLIC_STATUS
+                    "Public" => Advertisement::$PUBLIC_STATUS,
+                    "Sold" => Advertisement::$SOLD_STATUS
                 ]
             ])
             ->add("tags", EntityType::class, [
@@ -47,13 +48,14 @@ class AdvertisementFormType extends AbstractType
             ->add('slider_pictures', FileType::class, array(
                 'mapped' => false,
                 'attr' => array(
-                    'accept' => 'image/*',
+                    'accept' => 'image/jpg image/png',
                     'multiple' => 'multiple'
                 ),
-                'multiple'=> "true"
+                "required" => false,
+                'multiple'=> true
             ))
 
-            ->add('Create', SubmitType::class, array('label' => 'Insert Image', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')));
+            ->add('Create', SubmitType::class, array('label' => 'Submit', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-bottom:15px')));
 
     }
 

@@ -37,10 +37,15 @@ final class TagFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $pictograms = [
+            "furnitures.png",
+            "home.png",
+            "laptop.png"
+        ];
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'name' => self::faker()->word(),
-            'pictogram' => self::faker()->imageUrl(20, 20),
+            'pictogram' => $pictograms[array_rand($pictograms)],
             'color' => self::faker()->safeHexColor(),
         ];
     }
