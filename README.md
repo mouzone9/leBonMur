@@ -1,11 +1,10 @@
 # Le bon mur
 
 ##Installation
-Install all : 
+Launch docker : 
 ```
-composer install
-yarn
 docker-compose build
+docker-compose up -d
 ```
 
 Go in container bash :
@@ -14,9 +13,18 @@ docker exec -it php8-sf6 bash
 ```
 And run migrations :
 ```
-symfony console make:migrations
+symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
 ```
+
+Install all 
+````
+cd app
+composer install
+yarn
+````
+
+
 
 ##Development
 Run docker containers and launch webpack dev server: 
@@ -34,3 +42,7 @@ symfony server:start -d
 ```
 
 The server run finally at localhost:9000
+
+For testing purpose, a first admin is automatically created, here is his credentials :
+firstName = admin
+password = password

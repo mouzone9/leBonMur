@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Advertisement;
+use App\Entity\Tag;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
 
 /**
  * @method Advertisement|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +20,38 @@ class AdvertisementRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Advertisement::class);
+    }
+
+    public function findAllByStatus($status)
+    {
+
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.status = :val')
+            ->setParameter('val', $status)
+            ->orderBy('a.publicationDate', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findAllByUser(User $user) {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.seller = :val')
+            ->setParameter('val', $user->getId())
+            ->orderBy('a.publicationDate', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllByQuery (string $query) {
+        return $this->createQueryBuilder('a')
+            ->where('a.title LIKE :query')
+            ->orWhere('a.description LIKE :query')
+            ->andWhere("a.status LIKE 'PUBLIC'")
+            ->setParameter('query', '%'.$query.'%')
+            ->orderBy('a.publicationDate', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ad{% endblock %}
+
+{% block body %}
+<h1>Edit Ad</h1>
+
+{{ form_start(adForm) }}
+    {{ form_row(adForm.title) }}
+    {{ form_row(adForm.description) }}
+    {{ form_row(adForm.price) }}
+    {{ form_row(adForm.status) }}
+    {{ form_row(adForm.tags) }}
+    <div class="row mb-3 align-items-center">
+        <div class="col">
+            Actual gallery
+        </div>
+        <div class=" col swiper ad-image" {{ stimulus_controller('gallery-ad') }}>
+            <div class="swiper-wrapper">
+                {% for picture in ad.pictures %}
+                    {% if picture %}
+                        {% if picture  starts with "http" %}
+                            <img src="{{ picture }}" alt=""
+                                 class=" swiper-slide">
+                        {% else %}
+                            <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                                 class=" swiper-slide">
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+    {{ form_row(adForm.slider_pictures) }}
+    {{ form_end(adForm) }}
+
+
+    {% endblock %}
