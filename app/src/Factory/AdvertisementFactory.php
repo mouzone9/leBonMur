@@ -47,7 +47,7 @@ final class AdvertisementFactory extends ModelFactory
             'description' => self::faker()->text(),
             'price' => self::faker()->randomFloat(2, 1, 2000),
             'publicationDate' => self::faker()->dateTimeBetween('-6 month', 'now'), // TODO add DATETIME ORM type manually
-            'pictures' => self::getImageArray(),
+            'pictures' => self::faker()->getImageArray(),
             'status' => self::faker()->randomElement([
                 Advertisement::$PUBLIC_STATUS,
                 Advertisement::$DRAFT_STATUS,

@@ -16,7 +16,6 @@ class AdvertisementController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(AdvertisementRepository $repository, TagRepository $tagRepository, SerializerInterface $serializer): Response
     {
-
         return $this->render('advertisement/index.html.twig', [
             'ads' => $repository->findAll(),
             'tags' => $tagRepository->findAll()
