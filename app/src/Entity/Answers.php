@@ -23,7 +23,8 @@ class Answers
     #[ORM\JoinColumn(nullable: false)]
     private $commentsId;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'answers')]
+    #[ORM\ManyToOne(targetEntity: user::class,  inversedBy: 'answers')]
+    #[ORM\JoinColumn(onDelete: "CASCADE")]
     private $authorId;
 
     public function getId(): ?int
