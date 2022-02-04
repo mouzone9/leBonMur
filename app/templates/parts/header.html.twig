@@ -1,15 +1,15 @@
 <header class="d-flex justify-content-between">
     <a href="{{ path("index") }}">
-        <h1>Le bon Mur</h1>
+        <h1>Le bon mur</h1>
     </a>
 
     <div class="d-flex">
         {% if app.user %}
-            {% if "EDITOR" in app.user.roles %}
+            {% if "ROLE_EDITOR" in app.user.roles %}
                 <a href="{{ path("create_ad") }}" class="me-2 btn btn-info">New ad</a>
                 <a href="{{ path("user_ads") }}" class="me-2 btn btn-outline-info">My ads</a>
             {% endif %}
-            {% if "ADMIN" in app.user.roles %}
+            {% if "ROLE_ADMIN" in app.user.roles %}
                 <a href="{{ path("tags") }}" class="me-2 btn btn-outline-primary">Tags (admin only)</a>
                 <a href="{{ path("app_users") }}" class="me-2 btn btn-outline-primary">Users (admin only)</a>
             {% endif %}

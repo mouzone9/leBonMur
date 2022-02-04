@@ -47,7 +47,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Comments::class, orphanRemoval: true)]
     private $comments;
 
-    #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Answers::class)]
+
+    #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Answers::class, cascade: ['persist', 'remove'], )]
     private $answers;
 
     public function __construct()
