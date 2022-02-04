@@ -2,8 +2,6 @@
 
 {% block title %}LeBonMur{% endblock %}
 
-
-
 {% block body %}
     <div class="swiper ad-gallery" {{ stimulus_controller('gallery-ad') }}>
         <div class="swiper-wrapper">
@@ -26,6 +24,19 @@
             {{ ad.status }}
         </i>
     </p>
+    <form action="{{ path('vote_user', { adSlug: ad.slug,userId:ad.seller.id }) }}" method="post">
+        <ul>
+            <li>
+                <span>{{ ad.seller.firstName }}<span>
+                <button name="vote" value="down">
+                    <i class="far fa-thumbs-up"></i>
+                </button>
+                <button name="vote" value="up">
+                    <i class="fas fa-thumbs-up"></i>
+                </button>
+            </li>
+        <ul>
+    </form>
     <ul class="tags">
         {% for tag in ad.tags %}
             <li style="color:{{ tag.color }}">{{ tag.name }}</li>
