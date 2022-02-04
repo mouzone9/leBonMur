@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'seller', targetEntity: Advertisement::class, orphanRemoval: true)]
     private $advertisements;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $vote;
+
     public function __construct()
     {
         $this->advertisements = new ArrayCollection();
@@ -169,6 +172,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $advertisement->setSeller(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVote(): ?int
+    {
+        return $this->vote;
+    }
+
+    public function setVote(?int $vote): self
+    {
+        $this->vote = $vote;
+
+        return $this;
+    }
+
+    public function upVote(): self
+    {
+        $this->vote++;
+
+        return $this;
+    }
+
+    public function downVote(): self
+    {
+        $this->vote--;
 
         return $this;
     }

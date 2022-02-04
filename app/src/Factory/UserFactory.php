@@ -44,6 +44,7 @@ final class UserFactory extends ModelFactory
             'password' => '$2y$13$yx8ja/R5VBrUZV11FaFv/urNPJH17z.36PLYAuzct6UePt5K7Le/.',
             'lastName' => self::faker()->lastName(),
             'mail' => self::faker()->email(),
+            'vote' => rand(-20, 50),
         ];
     }
 
@@ -51,8 +52,8 @@ final class UserFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this// ->afterInstantiate(function(User $user): void {})
-            ;
+        return $this // ->afterInstantiate(function(User $user): void {})
+        ;
     }
 
     protected static function getClass(): string

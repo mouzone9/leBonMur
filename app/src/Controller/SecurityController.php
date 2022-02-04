@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SecurityController extends AbstractController
 {
@@ -32,5 +36,30 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/vote/{id}/vote", name="vote_user", methods={"POST"})
+     * @param EntityManagerInterface $entityManager
+     * @param Advertissement $advertissement
+     * @param Request $request
+     * @param User $users
+     * @return RedirectResponse
+     */
+    public function getVote($id, User $users, EntityManagerInterface $entityManager, Request $request): RedirectResponse
+    {
+        $vote = $request->request->get('vote', $id);
+
+        if ($vote === "up") {
+            $users->upvote();
+        } else {
+            $users->downVote();
+        }
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('index', [
+            'id' => $users->getId()
+        ]);
     }
 }

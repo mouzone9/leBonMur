@@ -26,6 +26,10 @@
             {{ ad.status }}
         </i>
     </p>
+        <form action="{{ path('vote_user', { id: user.id }) }}" method="post">
+            <button name="vote" value="up">Vote up</button>
+            <button name="vote" value="down">Vote down</button>
+        </form>
     <ul class="tags">
         {% for tag in ad.tags %}
             <li style="color:{{ tag.color }}">{{ tag.name }}</li>
