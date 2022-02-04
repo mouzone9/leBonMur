@@ -24,13 +24,16 @@ composer install
 yarn
 ````
 
-
+Build the style :
+```
+cd app
+yarn run build
+```
 
 ##Development
 Run docker containers and launch webpack dev server: 
 ```
 docker-compose up -d
-yarn run watch
 ```
 Go in container bash :
 ```
@@ -39,6 +42,11 @@ docker exec -it php8-sf6 bash
 And start symfony server :
 ```
 symfony server:start -d
+```
+Run the style  watcher :
+```
+cd app
+yarn run watch
 ```
 
 The server run finally at localhost:9000

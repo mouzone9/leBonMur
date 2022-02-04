@@ -44,8 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'seller', targetEntity: Advertisement::class, orphanRemoval: true)]
     private $advertisements;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $vote;
+    #[ORM\Column(type: 'integer', nullable: false)]
+    private $vote = 0;
 
     #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Comments::class, orphanRemoval: true)]
     private $comments;

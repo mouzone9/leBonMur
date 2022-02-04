@@ -110,7 +110,7 @@ class AdvertisementController extends AbstractController
 
             $this->addFlash("success", "Well done ! Your new advertisement is created : " . $advertisement->getTitle());
 
-            return $this->redirectToRoute("index");
+            return $this->redirectToRoute("user_ads");
         }
         return $this->render('advertisement/new.html.twig', [
             'adForm' => $form->createView()

@@ -6,13 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Answers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Answers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Form/ManageAccountFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/ManageAccountFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/parts/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/parts/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/user/edit-one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/edit-one.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-old.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.override.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/symfony/apache-pack/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

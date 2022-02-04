@@ -24,22 +24,18 @@
             {{ ad.status }}
         </i>
     </p>
-    <form action="{{ path('vote_user', { adSlug: ad.slug,userId:ad.seller.id }) }}" method="post">
-        <ul>
-            <li>
-                <span>{{ ad.seller.firstName }}<span>
-                <button name="vote" value="down">
-                    <i class="far fa-thumbs-up"></i>
-                </button>
-                <button name="vote" value="up">
-                    <i class="fas fa-thumbs-up"></i>
-                </button>
-            </li>
-        <ul>
+    <form action="{{ path('vote_user', { adSlug: ad.slug,userId:ad.seller.id }) }}" method="post" class="d-flex align-items-center">
+        <p class="me-2">Seller : {{ ad.seller.firstName }} (note : {{ ad.seller.vote }})</p>
+        <button name="vote" value="down" class="me-2 btn btn-danger " >
+            <i class="far fa-thumbs-down"></i>
+        </button>
+        <button name="vote" value="up" class="me-2 btn btn-success">
+            <i class="fas fa-thumbs-up"></i>
+        </button>
     </form>
     <ul class="tags">
         {% for tag in ad.tags %}
-            <li style="color:{{ tag.color }}">{{ tag.name }}</li>
+            <li style="color:{{ tag.color }}" class="d-inline-flex"> <img src="{{ asset('/uploads/pictograms/' ~ tag.pictogram) }}" style="height: 1rem; width: 1rem;"/> {{ tag.name }}</li>
         {% endfor %}
     </ul>
     <strong>{{ ad.price }}€</strong>
