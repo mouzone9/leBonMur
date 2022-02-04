@@ -1,6 +1,10 @@
 # Le bon mur
 
-##Installation
+For testing purpose, a first admin is automatically created, here is his credentials :
+ - firstName = admin
+ - password = password
+
+## Installation
 Launch docker : 
 ```
 docker-compose build
@@ -30,7 +34,7 @@ cd app
 yarn run build
 ```
 
-##Development
+## Development
 Run docker containers and launch webpack dev server: 
 ```
 docker-compose up -d
@@ -51,6 +55,4 @@ yarn run watch
 
 The server run finally at localhost:9000
 
-For testing purpose, a first admin is automatically created, here is his credentials :
-firstName = admin
-password = password
+
