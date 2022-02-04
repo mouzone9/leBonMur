@@ -21,23 +21,25 @@ class Comments
     #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
-    #[ORM\Column(type: 'integer')]
-    private $authorid;
-
     static $DRAFT_STATUS = "DRAFT";
     static $PUBLIC_STATUS = "PUBLIC";
     static $SOLD_STATUS = "SOLD";
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $slug;
-
     #[ORM\ManyToOne(targetEntity: advertisement::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private $advertisementId;
+
+    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $authorId;
+
+    #[ORM\OneToMany(mappedBy: 'commentsId', targetEntity: Answers::class, orphanRemoval: true)]
+    private $answers;
     
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->answers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,21 +52,9 @@ class Comments
         return $this->text;
     }
 
-    public function setText(float $text): self
+    public function setText(string $text): self
     {
         $this->text = $text;
-
-        return $this;
-    }
-
-    public function getAuthorId(): ?int
-    {
-        return $this->authorid;
-    }
-    
-    public function setAuthorId(float $authorid): self
-    {
-        $this->authorid = $authorid;
 
         return $this;
     }
@@ -81,18 +71,6 @@ class Comments
         return $this;
     }
 
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getAdvertisementId(): ?advertisement
     {
         return $this->advertisementId;
@@ -101,6 +79,48 @@ class Comments
     public function setAdvertisementId(?advertisement $advertisementId): self
     {
         $this->advertisementId = $advertisementId;
+
+        return $this;
+    }
+
+    public function getAuthorId(): ?user
+    {
+        return $this->authorId;
+    }
+
+    public function setAuthorId(?user $authorId): self
+    {
+        $this->authorId = $authorId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answers[]
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answers $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers[] = $answer;
+            $answer->setCommentsId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answers $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getCommentsId() === $this) {
+                $answer->setCommentsId(null);
+            }
+        }
 
         return $this;
     }

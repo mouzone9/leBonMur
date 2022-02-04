@@ -1,0 +1,21 @@
+<ul>
+	{% include "/parts/comments-form.html.twig" %}
+	{% for comment in ad.comments %}
+		<li>
+			<p>auteur :
+				{{comment.authorId.firstname}}</p>
+			{{ comment.text }}
+            <form method='POST' action='{{ path('newAnswer', {"id" : comment.id})}}'>
+                <input name='text' />
+                <input type='submit' />
+            </form>
+			{% for answer in comment.answers %}
+				<p>Answer :
+                    auteur :
+					{{ answer.authorId.firstname }}
+					{{answer.text}}
+				</p>
+			{% endfor %}
+		</li>
+	{% endfor %}
+</ul>

@@ -3,8 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Advertisement;
+use App\Entity\Comments;
 use App\Entity\User;
 use App\Factory\AdvertisementFactory;
+use App\Factory\AnswersFactory;
 use App\Factory\TagFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -12,6 +14,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
+use App\Factory\CommentsFactory;
 
 
 class AppFixtures extends Fixture
@@ -45,7 +48,15 @@ class AppFixtures extends Fixture
 
         UserFactory::createMany(10);
         TagFactory::createMany(10);
-        AdvertisementFactory::createMany(30, ['tags' => self::getTags(), 'seller' => UserFactory::random()]);
+        AdvertisementFactory::createMany(30, function () {
+            return ['tags' => self::getTags(), 'seller' => UserFactory::random()];
+        });
+        CommentsFactory::createMany(40, function () {
+            return ['authorId' => UserFactory::random(), 'advertisementId' => AdvertisementFactory::random()];
+        });
+        AnswersFactory::createMany(50, function () {
+            return ['commentsId' => CommentsFactory::random(), 'authorId' => UserFactory::random()];
+        });
     }
 
     private function getTags()
@@ -60,7 +71,5 @@ class AppFixtures extends Fixture
 
     private function addBaseUsers()
     {
-
-
     }
 }
