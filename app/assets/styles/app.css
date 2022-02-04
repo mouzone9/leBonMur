@@ -1,0 +1,136 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');*/
+
+* {
+    box-sizing: border-box;
+}
+/*body, html {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-size: 62.5%;*/
+/*}*/
+
+body {
+    font-family: Poppins, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    max-width: 100rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    box-shadow: rgba(29,29,31,0.15) 0 10px 60px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+footer {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    background-color: black;
+    color: #fff;
+    margin-top: 5rem;
+}
+
+.ads {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem 3rem;
+    color: black;
+}
+
+
+.ad {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows : 20rem 1fr;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: rgba(29,29,31,0.15) 0 10px 60px;
+}
+
+.ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ad-body {
+    padding: 10px;
+}
+
+.ad-link {
+    color: black;
+    display: block;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    flex-flow: wrap;
+}
+
+.ad-gallery {
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.swiper-slide {
+    object-fit: contain;
+}
+
+/*form {*/
+/*    width: 50rem;*/
+/*}*/
+
+/*form div {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 100%;*/
+/*    margin: auto;*/
+
+/*}*/
+
+/*form div div {*/
+/*    width: 100%;*/
+/*}*/
+
+/*form input {*/
+/*    padding: 1rem 2rem;*/
+/*}*/
+
+/*form button {*/
+/*    margin: auto;*/
+/*    display: block;*/
+/*    margin-top: 1rem;*/
+/*    padding: 1rem 2rem;*/
+/*    background-color: white;*/
+/*    border: forestgreen 1px solid;*/
+/*    border-radius: 1rem;*/
+/*    cursor: pointer;*/
+/*}*/

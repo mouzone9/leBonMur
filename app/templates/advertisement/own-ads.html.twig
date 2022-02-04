@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LeBonMur{% endblock %}
+
+{% block body %}
+    <h2>My advertisements</h2>
+
+    <div class="container">
+        {% for ad in ads %}
+            <div class="row mb-3 align-items-center border-bottom">
+                <div class="col">
+                    {% if ad.pictures is not empty %}
+                        {% set picture = ad.pictures[0] %}
+                        {% if picture  starts with "http" %}
+                            <img src="{{ picture }}" alt=""
+                                 class="img-fluid">
+                        {% else %}
+                            <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                                 class="img-fluid">
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="col"><a href="{{ path("ad", {"slug" : ad.slug}) }}">{{ ad.title | slice(0, 20) }}...</a></div>
+                <div class="col">
+                    <ul class="tags">
+                        {% for tag in ad.tags %}
+                            <li style="color:{{ tag.color }}">{{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col">
+                    <p>{{ ad.publicationDate | date("d/m/Y") }}</p>
+                </div>
+                <div class="col">
+                    <p>{{ ad.price }}€</p>
+                </div>
+                <div class="col">
+                    <p>{{ ad.status }}</p>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <a href="{{ path("update_ad", {'slug' : ad.slug}) }}" class="btn btn-primary me-2">✏</a>
+                    <a href="{{ path("delete_ad", {'slug' : ad.slug}) }}" class="btn btn-danger">X</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

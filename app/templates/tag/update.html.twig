@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag edit{% endblock %}
+
+{% block body %}
+    <h1>Tag edit</h1>
+    {{ form_start(tagForm) }}
+    {{ form_row(tagForm.name) }}
+    <div class="mb-1 row">
+        <div class="col"><p>Actual pictogram : </p></div>
+        <div class="col"><img src="{{ asset("uploads/pictograms/" ~ tag.pictogram) }}" style="width: 3rem;" alt=""></div>
+    </div>
+    {{ form_row(tagForm.pictogram) }}
+    {{ form_row(tagForm.color) }}
+    {{ form_end(tagForm) }}
+{% endblock %}

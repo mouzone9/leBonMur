@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LeBonMur{% endblock %}
+
+{% block body %}
+    <h1>Le bon mur</h1>
+    {% include "/parts/search.html.twig" %}
+    <h2>Advertisements</h2>
+    <div class="ads">
+        {% for ad in ads %}
+            <div class="ad ">
+                <div class="swiper ad-image" {{ stimulus_controller('gallery-ad') }}>
+                    <div class="swiper-wrapper">
+                        {% for picture in ad.pictures %}
+                            {% if picture %}
+                                {% if picture  starts with "http" %}
+                                    <img src="{{ picture }}" alt=""
+                                         class=" swiper-slide">
+                                {% else %}
+                                    <img src="{{ asset('/uploads/pictures/' ~ picture) }}" alt=""
+                                         class=" swiper-slide">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+                <div class="ad-body">
+                    <h4 class="ad-title">{{ ad.title }}</h4>
+                    <ul class="tags">
+                        {% for tag in ad.tags %}
+                            <li style="color:{{ tag.color }}" class="d-inline-flex"> <img src="{{ asset('/uploads/pictograms/' ~ tag.pictogram) }}" style="height: 1rem; width: 1rem;"/> {{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                    <strong>{{ ad.price }}€</strong>
+                    <p class="ad-text">{{ ad.description }}</p>
+                    <a href="{{ path("ad", {"slug" : ad.slug}) }}">See more</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

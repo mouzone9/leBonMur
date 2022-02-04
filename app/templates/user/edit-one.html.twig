@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My account{% endblock %}
+
+{% block body %}
+    <h1>My account</h1>
+
+    {{ form_start(accountForm) }}
+    {{ form_row(accountForm.firstName) }}
+    {{ form_row(accountForm.lastName) }}
+    {{ form_row(accountForm.mail) }}
+    {% if is_granted("ROLE_ADMIN") %}
+        {{ form_row(accountForm.roles) }}
+    {% endif %}
+    {{ form_row(accountForm.password) }}
+    {{ form_end(accountForm) }}
+{% endblock %}
