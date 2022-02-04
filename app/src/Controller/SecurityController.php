@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Advertisement;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,6 +11,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Repository\UserRepository;
+use App\Repository\AdvertisementRepository;
 
 class SecurityController extends AbstractController
 {
@@ -39,16 +42,19 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/vote/{id}/vote", name="vote_user", methods={"POST"})
+     * @Route("/vote/{adSlug}/{userId}", name="vote_user", methods={"POST"})
      * @param EntityManagerInterface $entityManager
-     * @param Advertissement $advertissement
      * @param Request $request
      * @param User $users
+     * @param Advertisement $ad
+     * @param UserRepository $userRepo
+     * @param AdvertisementRepository $adRepo
      * @return RedirectResponse
      */
-    public function getVote($id, User $users, EntityManagerInterface $entityManager, Request $request): RedirectResponse
+    public function getVote($adSlug, $userId, UserRepository $userRepo, AdvertisementRepository $adRepo, EntityManagerInterface $entityManager, Request $request): RedirectResponse
     {
-        $vote = $request->request->get('vote', $id);
+        $vote = $request->request->get('vote');
+        $users = $userRepo->findOneById($userId);
 
         if ($vote === "up") {
             $users->upvote();
@@ -58,8 +64,8 @@ class SecurityController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('index', [
-            'id' => $users->getId()
+        return $this->redirectToRoute('ad', [
+            'slug' => $adSlug
         ]);
     }
 }
