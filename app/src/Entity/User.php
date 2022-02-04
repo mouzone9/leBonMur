@@ -44,9 +44,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'seller', targetEntity: Advertisement::class, orphanRemoval: true)]
     private $advertisements;
 
+    #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Comments::class, orphanRemoval: true)]
+    private $comments;
+
+    #[ORM\OneToMany(mappedBy: 'authorId', targetEntity: Answers::class)]
+    private $answers;
+
     public function __construct()
     {
         $this->advertisements = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->answers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -167,6 +175,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($advertisement->getSeller() === $this) {
                 $advertisement->setSeller(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAuthorId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getAuthorId() === $this) {
+                $comment->setAuthorId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answers[]
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answers $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers[] = $answer;
+            $answer->setAuthorId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answers $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getAuthorId() === $this) {
+                $answer->setAuthorId(null);
             }
         }
 

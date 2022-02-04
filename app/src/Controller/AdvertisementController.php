@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Advertisement;
+use App\Entity\Answers;
 use App\Entity\User;
+use App\Entity\Comments;
 use App\Factory\AdvertisementFactory;
 use App\Form\AdvertisementFormType;
 use App\Form\SearchFormType;
 use App\Form\SearchType;
+use App\Form\CommentsFormType;
 use App\Repository\AdvertisementRepository;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManager;
@@ -175,10 +178,32 @@ class AdvertisementController extends AbstractController
 
 
     #[Route('/ad/{slug}', name: 'ad')]
-    public function showOne(Advertisement $advertisement): Response
+    public function showOne(Advertisement $advertisement, Request $request, EntityManagerInterface $em): Response
     {
+        $form = $this->createForm(CommentsFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comments = $form->getData();
+
+            $user = $this->getUser();
+
+            if($user){
+                $comments->setCreatedAt(new \DateTime())
+                    ->setAuthorId($user)
+                    ->setAdvertisementId($advertisement);
+
+                $em->persist($comments);
+                $em->flush();
+
+                $this->addFlash("success", 'Your comments was send ' . $comments->getText());
+            } else {
+                $this->addFlash("error", 'You need to connect to send a comment !');
+            };
+        }
+
         return $this->render('advertisement/show-one.html.twig', [
-            'ad' => $advertisement
+            'ad' => $advertisement,
+            'commentForm' => $form->createView()
         ]);
     }
 
@@ -197,5 +222,34 @@ class AdvertisementController extends AbstractController
         return $this->render('advertisement/own-ads.html.twig', [
             'ads' => $advertisementRepository->findAllByUser($this->getUser())
         ]);
+    }
+
+    #[Route('/ad/comments/{id}/newAnswer', name : 'newAnswer')]
+    public function addNewAnswer(Comments $comments, Request $request, EntityManagerInterface $em): Response
+    {
+        $form = $request->request->get('text');
+
+        if ($form) {
+            $answers = new Answers();
+
+            $user = $this->getUser();
+
+            if($user){
+                $answers->setCreateAt(new \DateTime())
+                    ->setAuthorId($user)
+                    ->setCommentsId($comments)
+                    ->setText($form);
+
+                $em->persist($answers);
+                $em->flush();
+
+                $this->addFlash("success", 'Your answer was send ' . $answers->getText());
+            } else {
+                $this->addFlash("error", 'You need to connect to send an answer !');
+            };
+        }
+        $advertisement = $comments->getAdvertisementId();
+
+        return $this->redirectToRoute("ad", ["slug" => $advertisement->getSlug()]);
     }
 }

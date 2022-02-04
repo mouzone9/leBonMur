@@ -1,0 +1,31 @@
+<div class='bg-white p-3'>
+<h3>Write a comment</h2>
+{% include "/parts/comments-form.html.twig" %}
+<h3>Comments</h2>
+<ul class='list-group'>
+	{% for comment in ad.comments %}
+		<li class='list-group-item'>
+			<div>
+				<div class="d-flex justify-content-between"><p>{{comment.authorId.firstname}}
+					{{ comment.authorId.lastName }}</p>
+                    <p>{{comment.createdAt|date("d/m/Y")}}</p></div>
+				<p>{{ comment.text }}</p>
+			</div>
+			<form class='d-flex' method='POST' action='{{ path('newAnswer', {"id" : comment.id})}}'>
+                <p class='text-wrap me-2'>Answer</p>
+				<input name='text'/>
+				<input type='submit'/>
+			</form>
+            <div class='list-group'>
+			{% for answer in comment.answers %}
+				<div class='list-group-item'>
+					<p>{{ answer.authorId.firstname }} {{ answer.authorId.lastname }}</p>
+                    <p>{{answer.createAt|date("d/m/Y")}}</p>
+					<p>{{answer.text}}</p>
+				</div>
+			{% endfor %}
+            </div>
+		</li>
+	{% endfor %}
+</ul>
+</div>
