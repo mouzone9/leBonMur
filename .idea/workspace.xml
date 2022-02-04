@@ -5,35 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/own-ads.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/search-result.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/advertisement/update.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/parts/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/tag/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/le-bon-mur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/le-bon-mur.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/AdvertisementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/TagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Advertisement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Advertisement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/RegistrationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Factory/TagFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Factory/TagFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/AdvertisementFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/AdvertisementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Repository/AdvertisementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/advertisement/show-one.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/account/my-account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/edit-one.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/parts/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/parts/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/tag/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/tag/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php8-sf6/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/php8-sf6/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,10 +153,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/advertisement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/account" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -190,10 +167,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\account" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\advertisement" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\parts" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\tag" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\assets\controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\user" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
