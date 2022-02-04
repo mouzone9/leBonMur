@@ -48,29 +48,5 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/account', name: 'app_account')]
-    public function account(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
-    {
-        $user = $this->getUser();
-        $form = $this->createForm(ManageAccountFormType::class, $user);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            /** @var User $updatedUser */
-            $updatedUser = $form->getData();
-            $updatedUser->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $updatedUser,
-                    $updatedUser->getPassword()
-                )
-            );
-            $entityManager->flush();
-
-        }
-
-        return $this->render('account/my-account.html.twig', [
-            'accountForm' => $form->createView(),
-        ]);
-    }
 }

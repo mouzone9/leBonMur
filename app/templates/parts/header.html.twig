@@ -7,11 +7,13 @@
         {% if app.user %}
             {% if "EDITOR" in app.user.roles %}
                 <a href="{{ path("create_ad") }}" class="me-2 btn btn-info">New ad</a>
-                <a href="{{ path("user_ads") }}" class="me-2 btn link-info">My ads</a>
+                <a href="{{ path("user_ads") }}" class="me-2 btn btn-outline-info">My ads</a>
             {% endif %}
             {% if "ADMIN" in app.user.roles %}
-                <a href="{{ path("tags") }}" class="me-2 btn btn-primary">Tags management</a>
+                <a href="{{ path("tags") }}" class="me-2 btn btn-outline-primary">Tags (admin only)</a>
+                <a href="{{ path("app_users") }}" class="me-2 btn btn-outline-primary">Users (admin only)</a>
             {% endif %}
+            <a href="{{ path("app_logout") }}" class="me-2 btn btn-success">My account</a>
             <a href="{{ path("app_logout") }}" class="me-2 btn btn-danger">Log out</a>
         {% else %}
             <a href="{{ path("app_login") }}" class="me-2 btn btn-primary">Log in</a>

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e4a673-a181-4f27-95ef-a674795389bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/templates/account/my-account.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/account/my-account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/edit-one.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/parts/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/parts/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,10 +153,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/advertisement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/account" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -165,10 +167,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\account" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\advertisement" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\parts" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\tag" />
       <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\assets\controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\timot\CODE_PROJECTS\COURS\le-bon-mur\app\templates\user" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

@@ -37,9 +37,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $mail;
 
-    public static $ROLE_USER = "USER";
-    public static $ROLE_EDITOR = "EDITOR";
-    public static $ROLE_ADMIN = "ADMIN";
+    public static $ROLE_USER = "ROLE_USER";
+    public static $ROLE_EDITOR = "ROLE_EDITOR";
+    public static $ROLE_ADMIN = "ROLE_ADMIN";
 
     #[ORM\OneToMany(mappedBy: 'seller', targetEntity: Advertisement::class, orphanRemoval: true)]
     private $advertisements;
