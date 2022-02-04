@@ -8,7 +8,6 @@ use App\Entity\User;
 use App\Entity\Comments;
 use App\Factory\AdvertisementFactory;
 use App\Form\AdvertisementFormType;
-use App\Form\AnswersFormType;
 use App\Form\SearchFormType;
 use App\Form\SearchType;
 use App\Form\CommentsFormType;
@@ -232,8 +231,6 @@ class AdvertisementController extends AbstractController
 
         if ($form) {
             $answers = new Answers();
-
-            $this->addFlash("success", 'Your answer was send ' . $answers->getText());
 
             $user = $this->getUser();
 
